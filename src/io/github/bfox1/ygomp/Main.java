@@ -10,9 +10,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("ygomp_main_menu.fxml"));
+        primaryStage.setTitle("Ygo Millennium Puzzle");
+        primaryStage.setScene(new Scene(root, 1278, 1000));
         primaryStage.show();
     }
 
