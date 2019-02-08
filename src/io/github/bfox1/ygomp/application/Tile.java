@@ -37,7 +37,7 @@ public class Tile
      * This is for creating random Tile Types.
      * This is ONLY to be used for Tile Generated.
      */
-    protected void createType()
+    void createType()
     {
         int rand = ThreadLocalRandom.current().nextInt(0,6);
 

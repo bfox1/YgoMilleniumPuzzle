@@ -8,20 +8,20 @@ public class TileColumn
 {
 
     private Tile[] tiles;
-    private int yPos;
+    private int xPos;
 
-    public TileColumn(int yPos)
+    public TileColumn(int xPos)
     {
-        tiles = new Tile[25];
-        this.yPos = yPos;
+        tiles = new Tile[26];
+        this.xPos = xPos;
     }
 
-    public int getyPos() {
-        return yPos;
+    public int getxPos() {
+        return xPos;
     }
 
-    public void setyPos(int yPos) {
-        this.yPos = yPos;
+    public void setxpos(int xPos) {
+        this.xPos = xPos;
     }
 
     /**
@@ -30,13 +30,39 @@ public class TileColumn
      * Shouldnt be used to set specific Tiles OR swap Tiles.
      * @param xPos
      */
-    public void setTile(int xPos)
+    public void populateField(int xPos)
     {
+        Tile t = generateTile(xPos);
 
+        addToArray(t);
     }
 
-    private Tile generateTile()
+    /**
+     * This will add the Tile to the array. Adding it incrementally to the next available position in the array.
+     */
+    private void addToArray(Tile tile)
     {
 
+        for(int i = 0; i < tiles.length; i++)
+        {
+            if(tiles[i] == null)
+            {
+                tiles[i] = tile;
+            }
+        }
+    }
+
+    /**
+     * A Private field that will create a Tile.
+     * @param xPos
+     * @return
+     */
+    private Tile generateTile(int xPos)
+    {
+        Tile tile = new Tile(xPos);
+
+        tile.createType();
+
+        return tile;
     }
 }
