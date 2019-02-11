@@ -1,5 +1,6 @@
 package io.github.bfox1.ygomp;
 
+import io.github.bfox1.ygomp.application.gameplay.PlayerField;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,9 @@ public class Main extends Application {
         primaryStage.setTitle("Ygo Millennium Puzzle");
         primaryStage.setScene(new Scene(root));
         primaryStage.initStyle(StageStyle.UNDECORATED);
+
+        PlayerField field = new PlayerField();
+        field.test();
 
         root.setOnMousePressed(event ->
         {

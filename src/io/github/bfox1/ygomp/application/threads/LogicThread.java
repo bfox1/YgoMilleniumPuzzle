@@ -14,6 +14,12 @@ public class LogicThread extends Thread
     @Override
     public void run()
     {
+        execute();
+    }
+
+    public void execute()
+    {
 
     }
+
 }

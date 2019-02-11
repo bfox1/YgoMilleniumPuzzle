@@ -10,6 +10,8 @@ public class TileColumn
     private Tile[] tiles;
     private int xPos;
 
+    private int highestTileNum;
+
     public TileColumn(int xPos)
     {
         tiles = new Tile[26];
@@ -30,17 +32,18 @@ public class TileColumn
      * Shouldnt be used to set specific Tiles OR swap Tiles.
      * @param xPos
      */
-    public void populateField(int xPos)
+    public void populateStartField(int xPos)
     {
         Tile t = generateTile(xPos);
 
-        addToArray(t);
+        addToBottomArray(t);
     }
 
     /**
      * This will add the Tile to the array. Adding it incrementally to the next available position in the array.
+     * This is for per tick incremental. Meaning the tiles will come from the bottom up.
      */
-    private void addToArray(Tile tile)
+    private void addToBottomArray(Tile tile)
     {
 
         for(int i = 0; i < tiles.length; i++)
@@ -52,6 +55,67 @@ public class TileColumn
         }
     }
 
+    public void addFromTopArray(Tile tile)
+    {
+        Tile[] tiles = new Tile[this.tiles.length];
+        tiles[0] = tile;
+        for(int i = 0; i < this.tiles.length; i++)
+        {
+            tiles[i+1] = this.tiles[i];
+        }
+        this.tiles = tiles;
+    }
+
+    /**
+     * This is for adding and multiple tiles from the top down.
+     * @param tiles
+     */
+    public void addFromTopArray(Tile... tiles)
+    {
+        Tile[] til = tiles;
+
+        for(int i = 0; i < this.tiles.length; i++)
+        {
+            til[i+tiles.length + 1] = this.tiles[i];
+        }
+    }
+
+    public Tile[] readDisplayTiles()
+    {
+        Tile[] tiles = new Tile[this.tiles.length];
+        int i = 25;
+        for(Tile tile : this.tiles)
+        {
+            if(tile != null)
+            {
+                tiles[i] = tile;
+            }
+        }
+
+        return tiles;
+    }
+
+    public void addFirst(Tile tile)
+    {
+
+        Tile[] tiles = new Tile[26];
+        tiles[0] = tile;
+
+        for(int i = 0; i < this.tiles.length; i++)
+        {
+            tiles[i+1] = this.tiles[i];
+        }
+
+        this.tiles = tiles;
+    }
+
+    public void addLast(Tile tile)
+    {
+        for(int i = 25; i >=0; i--)
+        {
+            if(this.tiles[i] == null)
+        }
+    }
     /**
      * A Private field that will create a Tile.
      * @param xPos

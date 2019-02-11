@@ -33,6 +33,11 @@ public class Tile
 
     }
 
+    public String getTileName()
+    {
+        return tileType.getTypeName();
+    }
+
     /**
      * This is for creating random Tile Types.
      * This is ONLY to be used for Tile Generated.
