@@ -28,10 +28,12 @@ public class PlayerField
         {
             Tile[] t = c.readDisplayTiles();
 
-            for(int i = 25; i > 0; i--)
+
+            for(int i = 0; i < t.length; i++)
             {
                 if(t[i] == null)
                 {
+
                     System.out.println("Empty");
                 }
                 else

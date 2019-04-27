@@ -10,7 +10,7 @@ public class TileColumn
     private Tile[] tiles;
     private int xPos;
 
-    private int highestTileNum;
+    private double highestTileNum;
 
     public TileColumn(int xPos)
     {
@@ -34,10 +34,37 @@ public class TileColumn
      */
     public void populateStartField(int xPos)
     {
+        System.out.println("Adding for Column : " + xPos);
         Tile t = generateTile(xPos);
-
+        Tile t2 = generateTile(xPos);
+        Tile t3 = generateTile(xPos);
+        Tile t4 = generateTile(xPos);
+        Tile t5 = generateTile(xPos);
         addToBottomArray(t);
+        addToBottomArray(t2);
+        addToBottomArray(t3);
+        addToBottomArray(t4);
+        addToBottomArray(t5);
+
+        System.out.println(tiles);
+        System.out.println(tiles.toString());
+        System.out.println(tiles[0].getTileName());
+        System.out.println(tiles[1].getTileName());
+
+        this.highestTileNum = 5;
     }
+
+    public double getHighestTileNum()
+    {
+        return this.highestTileNum;
+    }
+
+    public void incrementTilePosition(double d)
+    {
+        this.highestTileNum = d + highestTileNum;
+    }
+
+    public void de
 
     /**
      * This will add the Tile to the array. Adding it incrementally to the next available position in the array.
@@ -45,12 +72,13 @@ public class TileColumn
      */
     private void addToBottomArray(Tile tile)
     {
-
+        System.out.println("Adding Tile : " + tile.getTileName());
         for(int i = 0; i < tiles.length; i++)
         {
-            if(tiles[i] == null)
+            if(this.tiles[i] == null)
             {
                 tiles[i] = tile;
+                break;
             }
         }
     }
@@ -90,6 +118,7 @@ public class TileColumn
             {
                 tiles[i] = tile;
             }
+            i--;
         }
 
         return tiles;
@@ -113,7 +142,7 @@ public class TileColumn
     {
         for(int i = 25; i >=0; i--)
         {
-            if(this.tiles[i] == null)
+            //if(this.tiles[i] == null)
         }
     }
     /**
